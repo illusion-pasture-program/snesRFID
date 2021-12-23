@@ -33,10 +33,8 @@ void loop() {
 
   if (waitForIt >= 9) {
     waitForIt = 0;
-  }
+  }  
   
-  //Serial.println("RFID");    
-  //Serial.println("Locked");
   if(  rfid.PICC_IsNewCardPresent())
   {
       readRFID();
@@ -45,22 +43,17 @@ void loop() {
 }
 
 void readRFID()
-{
-  
-  rfid.PICC_ReadCardSerial();
-  //Serial.print(F("\nPICC type: "));
+{  
+  rfid.PICC_ReadCardSerial();  
   MFRC522::PICC_Type piccType = rfid.PICC_GetType(rfid.uid.sak);
-  //Serial.println(rfid.PICC_GetTypeName(piccType));
-
-  // Check is the PICC of Classic MIFARE type
+ 
   if (piccType != MFRC522::PICC_TYPE_MIFARE_MINI &&  
     piccType != MFRC522::PICC_TYPE_MIFARE_1K &&
     piccType != MFRC522::PICC_TYPE_MIFARE_4K) {
-    //Serial.println(F("Your tag is not of type MIFARE Classic."));
+    //tag is a MIFARE Classic."
     return;
-  }   
-    //Serial.println("Scanned PICC's UID:");    
-
+  }  
+    
     uint32_t cardid = rfid.uid.uidByte[0];
     cardid <<= 8;
     cardid |= rfid.uid.uidByte[1];
@@ -70,9 +63,7 @@ void readRFID()
     cardid |= rfid.uid.uidByte[3]; 
 
     cardBeenRead = 1;
-
-    //Serial.println(lastCardRead);
-    //Serial.println(cardid);
+    
     if (cardid != lastCardRead) {
       digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)      
       Serial.print(". rfid_process.sh ");
