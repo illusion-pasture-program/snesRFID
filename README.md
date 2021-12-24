@@ -20,7 +20,7 @@ Enables RFID card launching of games for MiSTer FPGA. Launches games without any
 Write the snesrfid.ino file to your Arduino. Attached the serial monitor to it and you should see it repeating `. rfid_process.sh noscan` about every second. As soon as your scan a RFID card, it should output `. rfid_process.sh 12345678`. The number is that card's unique ID. The reader will not scan the same card two times in a row. Make note of the card's unique id.
 
 ## MiSTer Setup
-Copy the files to your MiSTer SD card based on the structure of this repo. Edit case statement of the "rfid_process.sh" script to associate your RFID card UIDs with the roms files on your MiSTer. Leave the first "noscan" line of case statement unchanged.
+Copy the files to your MiSTer SD card based on the structure of this repo. Edit case statement of the "rfid_process.sh" script to associate your RFID card UIDs with the roms files on your MiSTer. Leave the first "noscan" line of case statement unchanged. Install MiSTer Batch Control (https://github.com/pocomane/MiSTer_Batch_Control)
 
 ## Use
 After editing the rfid_process.sh script, turn off your MiSTer. Plug your Arduino into an available USB port on your USB board module and turn on your MiSTer. Depending on how my scripts you have running, it will take about 30 seconds from first turning on the power to the RFID reader becoming available. Once the RFID reader is available, it will automatically load an Atari 2600 ROM (included in the repo) that displays "READY" in full screen.
