@@ -17,7 +17,7 @@ Enables RFID card launching of games for MiSTer FPGA. Launches games without any
 |VCC|3.3V|
 |GRD|GRD|
 
-Write the snesrfid.ino file to your Arduino. Attached the serial monitor to it and you should see it repeating `. rfid_process.sh noscan` about every second. As soon as your scan a RFID card, it should output `. rfid_process.sh 12345678`. The number is that card's unique ID. The reader will not scan the same card two times in a row. Make note of the card's unique id.
+Write the snesrfid.ino file to your Arduino. On your computer, attach the serial monitor to your Arduino and you should see it repeating `. rfid_process.sh noscan` about every second. As soon as your scan a RFID card, it should output `. rfid_process.sh 12345678`. The number is that card's unique ID. The reader will not scan the same card two times in a row. Make note of the card's unique id.
 
 ## MiSTer Setup
 Copy the files to your MiSTer SD card based on the structure of this repo. Edit case statement of the "rfid_process.sh" script to associate your RFID card UIDs with the roms files on your MiSTer. Leave the first "noscan" line of case statement unchanged.
